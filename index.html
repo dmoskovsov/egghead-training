@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="app.css">
+
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
     <script src="app.js"></script>
 </head>
 
-<body ng-app="app"
-      ng-init="world = 'marketplace team!'">
-hello {{world}}
+<body>
+
+<div ng-app="app"
+     class="row"
+     ng-controller="MainCtrl">
+
+    <!--menu-->
+    <div class="col-md-3 menu">
+        <p ng-repeat="category in categories">
+            {{category.name}}
+        </p>
+    </div>
+
+    <!--main body-->
+    <div class="col-md-9">
+        hello
+    </div>
+</div>
 </body>
 </html>
