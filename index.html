@@ -21,14 +21,24 @@
 
     <!--menu-->
     <div class="col-md-3 menu">
-        <p ng-repeat="category in categories">
+
+        <h2 ng-click="setCurrentCategory(undefined)">RedMart</h2>
+
+        <p ng-repeat="category in categories"
+           class="menu-item"
+           ng-class="{active:isCategorySelected(category)}"
+           ng-click="setCurrentCategory(category)">
             {{category.name}}
         </p>
     </div>
 
     <!--main body-->
     <div class="col-md-9">
-        hello
+        {{currentCategory.name}}
+
+        <p ng-repeat="bookmark in bookmarks | filter:{category:currentCategory.name}">
+            {{bookmark.title}}
+        </p>
     </div>
 </div>
 </body>

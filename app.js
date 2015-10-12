@@ -1,5 +1,5 @@
 angular.module('app', []).controller('MainCtrl', function($scope) {
-  $scope.world = 'marketplace team!';
+  $scope.currentCategory = undefined;
 
   $scope.categories = [
     {"id": 0, "name": "Development"},
@@ -19,4 +19,12 @@ angular.module('app', []).controller('MainCtrl', function($scope) {
     {"id": 7, "title": "Wimp", "url": "http://wimp.com", "category": "Humor"},
     {"id": 8, "title": "Dump", "url": "http://dump.com", "category": "Humor"}
   ];
+
+  $scope.setCurrentCategory = function(category) {
+    $scope.currentCategory = category;
+  };
+
+  $scope.isCategorySelected = function(category) {
+    return $scope.currentCategory && category.name === $scope.currentCategory.name;
+  };
 })
