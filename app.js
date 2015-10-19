@@ -1,6 +1,7 @@
 angular.module('app', []).controller('MainCtrl', function($scope) {
+  var isCreateState = false;
+  var isEditState = false;
   $scope.currentCategory = undefined;
-
   $scope.categories = [
     {"id": 0, "name": "Development"},
     {"id": 1, "name": "Design"},
@@ -26,5 +27,31 @@ angular.module('app', []).controller('MainCtrl', function($scope) {
 
   $scope.isCategorySelected = function(category) {
     return $scope.currentCategory && category.name === $scope.currentCategory.name;
+  };
+
+  $scope.isCreateState = function() {
+    return isCreateState;
+  };
+
+  $scope.isEditState = function() {
+    return isEditState;
+  };
+
+  $scope.goToCreateState = function() {
+    isCreateState = true;
+  };
+
+  $scope.goToDefaultState = function() {
+    isCreateState = false;
+  };
+
+  $scope.saveBookmark = function(title, url) {
+    $scope.bookmarks.push({title: title, url: url, id: $scope.bookmarks.length});
+    isCreateState = false;
+  };
+
+  $scope.goToEditState = function() {
+    isEditState = true;
+    isCreateState = false;
   };
 })

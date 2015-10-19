@@ -36,9 +36,51 @@
     <div class="col-md-9">
         {{currentCategory.name}}
 
-        <p ng-repeat="bookmark in bookmarks | filter:{category:currentCategory.name}">
+        <p ng-repeat="bookmark in bookmarks | filter:{category:currentCategory.name}"
+           ng-click="goToEditState()">
+            <span class="glyphicon glyphicon-edit"></span>
             {{bookmark.title}}
         </p>
+
+        <div class="row"
+             ng-if="!isCreateState()">
+            <div class="btn btn-primary"
+                 ng-click="goToCreateState()">Create Bookmark
+            </div>
+        </div>
+
+        <div ng-if="isCreateState()">
+
+            <div class="input-group">
+                <label>Bookmark Title</label>
+                <input type="text"
+                       ng-model="title"
+                       class="form-control"
+                       placeholder="Bookmark Title">
+            </div>
+
+            <div class="input-group">
+                <label>Bookmark URL</label>
+                <input type="text"
+                       ng-model="url"
+                       class="form-control"
+                       placeholder="Bookmark URL">
+            </div>
+
+            <div class="input-group">
+                <div class="btn btn-secondary"
+                     ng-click="goToDefaultState()">Cancel
+                </div>
+                <div class="btn btn-primary"
+                     ng-click="saveBookmark(title, url)">Save Bookmark
+                </div>
+            </div>
+
+        </div>
+
+        <div ng-if="isEditState()">
+            Edit Form
+        </div>
     </div>
 </div>
 </body>
